@@ -7,7 +7,10 @@ class MessageAdmin(admin.ModelAdmin):
 
     """ Message Admin definition """
 
-    pass
+    list_display = (
+        "__str__",
+        "created",
+    )
 
 
 # Register your models here.
@@ -16,4 +19,8 @@ class ConversationAdmin(admin.ModelAdmin):
 
     """ Conversation Admin definition """
 
-    pass
+    list_display = (
+        "__str__",
+        "count_messages",
+        "count_participants",
+    )
