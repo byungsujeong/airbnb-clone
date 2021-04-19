@@ -1,6 +1,10 @@
 from django.urls import path
-from rooms import views
+from . import views
+
+app_name = "rooms"
 
 urlpatterns = [
-    path("", views.HomeVIew.as_view(), name="home"),
+    # path("<int:pk>", views.room_detail, name="detail"),
+    path("<int:pk>", views.RoomDetail.as_view(), name="detail"),
+    path("search", views.search, name="search"),
 ]
