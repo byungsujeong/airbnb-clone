@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 from . import models, forms
 
 # Create your views here.
-class HomeVIew(ListView):
+class HomeView(ListView):
 
     """ HomeView Definition """
 
