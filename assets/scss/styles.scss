@@ -16,8 +16,23 @@
     @apply w-full font-semibold text-lg mb-2 border text-center rounded-sm py-5;
 }
 
+.btn-link {
+    @apply w-full font-semibold text-lg mb-2 border text-center py-3 rounded-lg text-white bg-red-400 border-red-400;
+}
+
+textarea,
+select,
 input {
-    @apply w-full font-semibold text-lg mb-1 rounded-sm py-5 text-left border border-gray-500 px-5 focus:outline-none focus:border-green-500 focus:shadow-md;
+    @apply w-full font-semibold text-lg mb-1 rounded-sm py-3 text-left border border-gray-500 px-5 focus:outline-none focus:border-green-500 focus:shadow-md;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+select {
+    height: 50px;
 }
 
 form {
@@ -36,6 +51,41 @@ form {
 
 .err_span {
     @apply text-red-700 font-semibold text-sm;
+}
+
+@keyframes messageFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    5% {
+        opacity: 1;
+        transform: translateY(50px);
+    }
+    95% {
+        opacity: 1;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.message {
+    animation: messageFadeIn 5s ease-in-out forwards;
+    &.error {
+        @apply bg-red-600;
+    }
+    &.info{
+        @apply bg-blue-400;
+    }
+    &.success{
+        @apply bg-green-500;
+    }
+    &.warning{
+        @apply bg-yellow-400;
+    }
 }
 
 @tailwind utilities;
