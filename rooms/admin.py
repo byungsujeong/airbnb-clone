@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
+from admin_numeric_filter.admin import RangeNumericFilter
 from . import models
 
 
@@ -94,6 +95,7 @@ class RoomAdmin(admin.ModelAdmin):
     )
 
     list_filter = (
+        ("price", RangeNumericFilter),
         "instant_book",
         "host__superhost",
         "room_type",

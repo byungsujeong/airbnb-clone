@@ -31,6 +31,7 @@ ALLOWED_HOSTS = "*"
 # Application definition
 
 DJANGO_APPS = [
+    "admin_numeric_filter",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,10 +40,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = [
-    "django_countries",
-    "django-seed",
-]
+THIRD_PARTY_APPS = []
 
 PROJECT_APPS = [
     "core.apps.CoreConfig",
@@ -54,7 +52,7 @@ PROJECT_APPS = [
     "conversations.apps.ConversationsConfig",
 ]
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -151,3 +149,8 @@ EMAIL_PORT = "587"
 EMAIL_HOST_USER = os.environ.get("MAILGUN_USERNAME")
 EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
 EMAIL_FROM = os.environ.get("MAILGUN_FROM")
+
+
+# Auth
+
+LOGIN_URL = "/users/login/"

@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from core import models as core_models
 
@@ -35,3 +36,11 @@ class Review(core_models.TimeStampModel):
         return round(avg, 2)
 
     rating_average.short_description = "Avg."
+
+    def pass_90_days(self):
+        now = datetime.datetime.utcnow()
+        diff = (now - self.created.replace(tzinfo=None)).days
+        if diff > 90:
+            return True
+        else:
+            return False
