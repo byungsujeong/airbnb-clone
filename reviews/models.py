@@ -1,5 +1,6 @@
 import datetime
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 from core import models as core_models
 
 # Create your models here.
@@ -8,12 +9,22 @@ class Review(core_models.TimeStampModel):
     """ Review Model Definition """
 
     review = models.TextField()
-    accurancy = models.IntegerField()
-    communication = models.IntegerField()
-    cleanliness = models.IntegerField()
-    location = models.IntegerField()
-    check_in = models.IntegerField()
-    value = models.IntegerField()
+    accurancy = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    communication = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    cleanliness = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    location = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    check_in = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    value = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     user = models.ForeignKey(
         "users.User", related_name="reviews", on_delete=models.CASCADE
     )
@@ -44,3 +55,6 @@ class Review(core_models.TimeStampModel):
             return True
         else:
             return False
+
+    class Meta:
+        ordering = ("-created",)
